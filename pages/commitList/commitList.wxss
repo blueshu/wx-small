@@ -1,0 +1,47 @@
+/**index.wxss**/
+
+.commit-list {width: 100%;overflow: hidden;padding-bottom: 70rpx;}
+.commit {
+  display: flex;
+  flex-direction: row;
+  padding: 30rpx 2%;
+  width: 96%;
+  background: #FFF;
+  border-bottom: 1rpx solid #dbdbdb;
+}
+.commit:last-child {border-bottom: none;}
+
+.commit .commit-left {
+  width: 85%;
+  vertical-align: top;
+  display: inline-block;
+}
+
+.nothing {line-height: 100rpx;font-size: 30rpx;}
+.commit .commit-image {width: 100rpx;border-radius: 100%;overflow: hidden;height:100rpx;vertical-align: top;display: inline-block;margin-right: 30rpx;}
+.commit-image image {width: 100rpx;height: 100rpx;}
+.hot {margin: 20rpx 0;border-bottom: none;}
+.commit-user {font-size: 32rpx;padding-bottom: 10rpx;display: inline-block;width: 80%;}
+.commit-date {display: inline-block;width: 30%;color: #b1b1b1;font-size: 26rpx;}
+.commit-con {font-size: 30rpx;}
+.commit-area navigator {display: inline-block;margin: 10rpx 20rpx 0 20rpx;}
+.commit-area image{width: 36rpx;height: 34rpx;vertical-align: middle;}
+.commit-area {
+  position: fixed;bottom: 0;left: 0;width: 100%;height: 80rpx;background-color: #FFF;display: -webkit-flex; /* Safari */
+  display: flex;
+  flex-direction: row;}
+.commit-count,.heart-count {font-size: 24rpx;color: #fc1c62;margin: 0 10rpx;vertical-align: text-top;}
+.commit-area input {width: 72%;height: 60rpx;line-height:70rpx;overflow: hidden;font-size: 30rpx;padding: 0 20rpx;margin: 10rpx;background-color: #F5f5f5;
+  border-radius: 40rpx;}
+.commit-area button {margin:10rpx;
+  background-color: #F5F5F5; color: #000;font-size: 28rpx;height: 65rpx;border-radius: 6rpx;}
+.hot-area {margin-top: 20rpx;}
+.share-area {margin: 20rpx 0 0 20rpx;}
+.share-btn {margin: 0 !important;padding: 0;background: rgba(255,255,255,0) !important;border: 1px solid rgba(255,255,233,0)!important;line-height: normal;}
+.share-btn:after {border: 1px solid rgba(255,255,233,0)!important;}
+.commit-btn-cancel {background-color: #ea3edf!important;color: #FFF!important;}
+.in-area {height: 80rpx;}
+.has-pick {color: #5aa024!important;}
+.commit-app{width:70rpx;height: 46rpx;display: inline-block;float: right;margin-right: 0rpx;}
+.commit-app image {width: 28rpx;height: 28rpx;margin: 4rpx;vertical-align: middle;}
+.commit-app text {font-size: 24rpx;display: inline-block;vertical-align: middle;margin-right: 5rpx;}

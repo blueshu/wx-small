@@ -1,0 +1,36 @@
+<!--index.wxml-->
+<view class="main-area">
+    <swiper indicator-dots="{{indicatorDots}}"
+            autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
+        <block wx:for="{{imgUrls}}" wx:key="imgId">
+            <swiper-item>
+                <image src="{{item.url}}" class="slide-image"/>
+            </swiper-item>
+        </block>
+    </swiper>
+  <view class="hot-news">
+      <view class="new-index" wx:for="{{news}}" wx:key="news.id">
+          <view class="hot-img">
+              <navigator url="/pages/details/details?id={{item.id}}">
+                  <image class="hot-img-area" src="{{host+''+item.content_pic}}"/>
+                  <view class="hot-title">
+                      {{item.title}}
+                  </view>
+              </navigator>
+          </view>
+          <navigator url="/pages/details/details?id={{item.id}}">
+          <view class="hot-des">
+              {{item.desc}}
+              <view style="text-align: right;">
+                  <image class="index-icon" wx:if="{{item.id}}"  src="../../assets/svg/browse{{colorKey}}.svg"></image>
+                  <label class="index-count" wx:if="{{item.id}}" style="color:{{colorStr}};"><text>{{item.uv}}</text></label>
+                  <image class="index-icon" wx:if="{{commitDisplay}}"  src="../../assets/svg/commit{{colorKey}}.svg"></image>
+                  <label class="index-count" wx:if="{{commitDisplay}}" style="color:{{colorStr}};"><text>{{item.cv}}</text></label>
+                  <label class="index-count" wx:if="{{item.id}}" style="color:{{colorStr}};"><text>{{item.create_time}}</text></label>
+              </view>
+          </view>
+          </navigator>
+      </view>
+  </view>
+</view>
+<view class="version" wx:if="{{copyright && isPullDown}}">{{copyright}}</view>

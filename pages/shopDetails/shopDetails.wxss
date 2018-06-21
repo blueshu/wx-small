@@ -1,0 +1,33 @@
+.pro-img {display: block;height: 220px;width: 100%;}
+.pro-img image{display: block;width: 100%;height: 100%;}
+.pro-des {width: 96%;padding: 20rpx 2%;background: #FFF;}
+.pro-title {overflow: hidden;}
+.pro-title label{font-size: 30rpx; width: 70%;display: inline-block;line-height: 48rpx;vertical-align: top;}
+.pro-share {width: 25px;height: 47px;display: inline-block;margin-right: 10rpx;}
+.pro-sale-price {color: #cf171f;font-size: 45rpx;line-height: 70rpx;}
+.pro-price {color: #999999;font-size: 30rpx;line-height: 40rpx;}
+.pro-price label {text-decoration:line-through;}
+.pro-m {color: #666;width: 70%;font-size: 28rpx;display: inline-block;text-align: left;}
+.pro-order {color: #666;width: 30%;font-size: 28rpx;display: inline-block;text-align: right;float: right;}
+.pro-mes {margin: 10rpx 0;overflow: hidden;}
+.pro-title button {float: right; display:inline-block;margin: 0 !important;padding: 0;background: rgba(255,255,255,0) !important;border: 1px solid rgba(255,255,233,0)!important;line-height: normal;}
+.pro-title button:after {border: 1px solid rgba(255,255,233,0)!important;}
+.pro-pay {background: #fafafa;font-size: 30rpx;padding: 34rpx 2%;line-height: 30rpx;color: #666;}
+.pro-pay image {width: 30rpx;height: 30rpx; vertical-align: middle;}
+.shop-buy {position: fixed;bottom: 0;left: 0;width: 100%;height: 100rpx;color: #FFF;padding: 0;margin: 0;}
+.shop-buy .bg {width: 100rpx;height: 100rpx;background: rgba(255,255,255,0.2);}
+.shop-buy image {width: 60rpx;height: 60rpx;margin: 20rpx;float: left;}
+.shop-buy label{display: inline-block;width: 80%;text-align: center;line-height:100rpx;float: left;font-size: 42rpx;}
+.pro-choose {background:#FFF;position: fixed;bottom: 100rpx;left: 0;width: 96%;padding: 10rpx 2%;margin: 0;font-size: 35rpx;display: none;}
+.pro-choose view {margin-bottom: 20rpx;}
+.pro-choose view.label-area {margin: 0;padding: 0;display: block;}
+.pro-choose .choose-item {border-bottom: 1px solid #DDD;overflow: hidden; padding: 10rpx 0;}
+.pro-choose .choose-item label {background: #f5f5f5; padding: 10rpx 20rpx; border-radius: 10rpx; margin: 5rpx 15rpx;font-size: 30rpx;display: inline-block;}
+.pro-choose button {float: left;display: inline-block;width: 85rpx;font-weight: bold;font-size: 50rpx;margin: 0 10rpx;line-height: 80rpx;padding: 0;}
+.pro-count {overflow: hidden;}
+.pro-count label {display: inline-block;line-height: 80rpx;float: left;min-width: 70rpx;text-align: center;}
+.pro-count .pro-ss-tit{width: 60%;text-align: left;}
+.pro-choose-show{display: block; animation: kf-marque-show .6s linear;}
+.pro-choose-hide{animation: kf-marque-hide .6s linear;}
+@keyframes kf-marque-show{ 0% { transform: translateY(100%); } 100% { transform: translateY(0); } }
+@keyframes kf-marque-hide{ 0% { transform: translateY(0); } 100% { transform: translateY(100%); } }

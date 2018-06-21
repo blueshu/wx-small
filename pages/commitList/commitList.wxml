@@ -1,0 +1,37 @@
+<!--index.wxml-->
+<view>
+  <view class="commit-list">
+      <view class="commit hot hide" wx:if="{{commitList.length > 0}}" >
+        <view class="commit-image">
+            <image src="{{commitList[0].headimgurl}}"/>
+        </view>
+        <view class="commit-left">
+            <view class="commit-user has-pick" wx:if="{{commitList[0].p_nickname}}" data-id="{{commitList[0].id}}" data-uid="{{commitList[0].wechat_user_id}}"  data-nName="{{commitList[0].nickname}}" bindtap="displayCommit">{{commitList[0].nickname}}@{{commitList[0].p_nickname}}</view>
+            <view class="commit-user" wx:else data-id="{{commitList[0].id}}" data-uid="{{commitList[0].wechat_user_id}}"  data-nName="{{commitList[0].nickname}}" bindtap="displayCommit">{{commitList[0].nickname}}</view>
+            <view class="commit-date">{{commitList[0].create_time}}</view>
+            <view class="commit-app" wx:if="{{commitList[0].is_up}}" bindtap="doAp" data-val="1" data-cid="{{commitList[0].id}}"><text>{{commitList[0].up_count}}</text><image src="../../assets/app-a.png"/></view>
+            <view class="commit-app" wx:else bindtap="doAp" data-val="0" data-cid="{{commitList[0].id}}"><text>{{commitList[0].up_count}}</text><image src="../../assets/app-b.png"/></view>
+            <view class="commit-con" data-id="{{commitList[0].id}}" data-uid="{{commitList[0].wechat_user_id}}"  data-nName="{{commitList[0].nickname}}" bindtap="displayCommit">{{commitList[0].message}}</view>
+        </view>
+      </view>
+    <view class="commit" wx:for="{{commitList}}" wx:key="item.id" wx:for-index="idx">
+      <view class="commit-image">
+        <image src="{{item.headimgurl}}"/>
+      </view>
+      <view class="commit-left">
+          <view class="commit-user has-pick" wx:if="{{item.p_nickname}}" data-uid="{{item.wechat_user_id}}" data-nName="{{item.nickname}}" data-id="{{item.id}}" bindtap="displayCommit">{{item.nickname}}@{{item.p_nickname}}</view>
+          <view class="commit-user" wx:else data-uid="{{item.wechat_user_id}}" data-nName="{{item.nickname}}" data-id="{{item.id}}" bindtap="displayCommit">{{item.nickname}}</view>
+        <view class="commit-date">{{item.create_time}}</view>
+          <view class="commit-app" wx:if="{{item.is_up}}" bindtap="doAp" data-val="1" data-cid="{{item.id}}"><text>{{item.up_count}}</text><image src="../../assets/app-a.png"/></view>
+          <view class="commit-app" wx:else bindtap="doAp" data-val="0" data-cid="{{item.id}}"><text>{{item.up_count}}</text><image src="../../assets/app-b.png"/></view>
+        <view class="commit-con" data-uid="{{item.wechat_user_id}}" data-nName="{{item.nickname}}" data-id="{{item.id}}" bindtap="displayCommit">{{item.message}}</view>
+      </view>
+    </view>
+  </view>
+  <view wx:if="{{commitList.length==0}}" class="nothing">暂无评论内容</view>
+</view>
+<view class="commit-area">
+    <input type="text" placeholder="{{defaultVal}}" value="{{commitVal}}" focus="{{focus}}"  fixed="true" bindinput ="keyInput"/>
+    <button form-type="submit" class="commit-btn" bindtap="doCommit" > 发送 </button>
+    <button form-type="submit" class="commit-btn-cancel hide" bindtap="cancelCommit" > 取消 </button>
+</view>

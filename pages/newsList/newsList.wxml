@@ -1,0 +1,21 @@
+<!--index.wxml-->
+<view class="container">
+  <view class="new-list" wx:for="{{news}}" wx:key="item.id">
+      <view class="news">
+        <view class="new-left">
+          <navigator url="/pages/details/details?id={{item.id}}">
+            <view class="news-title">{{item.title}}</view>
+          </navigator>
+          <navigator url="/pages/details/details?id={{item.id}}">
+          <view class="news-con">{{item.desc}}</view>
+          </navigator>
+        </view>
+        <view class="news-image">
+            <navigator url="/pages/details/details?id={{item.id}}">
+              <image src="{{host+''+item.content_pic}}"/>
+            </navigator>
+        </view>
+      </view>
+  </view>
+  <view wx:if="{{news.length==0}}" class="nothing">暂无内容</view>
+</view>

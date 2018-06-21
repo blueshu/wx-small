@@ -1,0 +1,61 @@
+<view class="main-area">
+    <view class="pro-msg" bindtap="hideBuyChoose">
+        <view class="pro-img">
+            <image src="{{content_pic}}" mode="scaleToFill"></image>
+        </view>
+        <view class="pro-des">
+            <view class="pro-title">
+                <label>
+                    {{goodsDetails.name}}
+                </label>
+                <button open-type="share" >
+                    <image class="pro-share" src="../../assets/share.png"/>
+                </button>
+            </view>
+            <view class="pro-sale-price" wx:if="{{choosePrice > 0}}">
+                <label>￥</label>{{choosePrice*number/100}}
+            </view>
+            <view class="pro-sale-price" wx:elif="{{goodsDetails.specification_list.length > 0}}">
+                <label>￥</label>{{minPrice/100}}-{{maxPrice/100}}
+            </view>
+
+            <view class="pro-price" wx:if="{{goodsDetails.cost_price > 0}}">
+                价格<label>￥{{goodsDetails.cost_price/100}}</label>
+            </view>
+            <view class="pro-mes">
+                <label class="pro-m hide">精美手工制品</label>
+                <label class="pro-order" wx:if="{{goodsDetails.times>0}}">月销{{goodsDetails.sell_num*goodsDetails.times}}笔</label>
+                <label class="pro-order" wx:else>月销{{goodsDetails.sell_num}}笔</label>
+            </view>
+        </view>
+        <view class="pro-pay">
+            <image src="../../assets/yes.png" />
+            支持微信支付
+        </view>
+        <view class="pro-oth">
+
+        </view>
+    </view>
+    <view wx:if="{{chooseFlag}}" class="pro-choose pro-choose-show">
+        <view class="choose-item">
+            <view>分类：</view>
+            <view style="display: inline-block;" wx:for="{{goodsDetails.specification_list}}" wx:key="item.id" data-id="{{item.id}}" bindtap="doChoose">
+                <label  wx:if="{{item.id == selectId}}" style="background: {{colorStr}}; color: #FFF;" class="label-area">{{item.specification}}</label>
+                <label  wx:else class="label-area">{{item.specification}}</label>
+            </view>
+        </view>
+        <view class="pro-count">
+            <label class="pro-ss-tit">购买数量：</label>
+            <button bindtap="deleteNumber">-</button>
+            <label>{{number}}</label>
+            <button bindtap="addNumber">+</button>
+        </view>
+    </view>
+    <view class="shop-buy" style="background: {{colorStr}};" bindtap="doBuy">
+        <label class="bg">
+            <image src="../../assets/shop-car.png" />
+        </label>
+        <label>立即购买</label>
+    </view>
+</view>
+<view class="version" wx:if="{{copyright && isPullDown}}">{{copyright}}</view>

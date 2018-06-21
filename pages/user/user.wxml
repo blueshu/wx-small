@@ -1,0 +1,82 @@
+<!--index.wxml-->
+<view class="main-area">
+  <view class="header-bg">
+      <image class="header-bg-img" src="../../assets/user-bg.png"/>
+      <image class="header-img cen" src="{{avatarUrl}}"/>
+     <text class="user-name cen">{{nickName}}</text>
+  </view>
+  <view class="menu" wx:if="{{selectFlag=='like'}}">
+      <view class="menu-i select" bindtap="chooseCategory" data-val="like">喜欢</view>
+      <view class="menu-i" bindtap="chooseCategory" data-val="commit">评论</view>
+      <view class="menu-i" bindtap="chooseCategory" data-val="shop">购买</view>
+  </view>
+    <view class="menu" wx:elif="{{selectFlag=='commit'}}">
+        <view class="menu-i" bindtap="chooseCategory" data-val="like">喜欢</view>
+        <view class="menu-i select" bindtap="chooseCategory" data-val="commit">评论</view>
+        <view class="menu-i" bindtap="chooseCategory" data-val="shop">购买</view>
+    </view>
+    <view class="menu" wx:else>
+        <view class="menu-i" bindtap="chooseCategory" data-val="like">喜欢</view>
+        <view class="menu-i" bindtap="chooseCategory" data-val="commit">评论</view>
+        <view class="menu-i select" bindtap="chooseCategory" data-val="shop">购买</view>
+    </view>
+  <view class="new-list" wx:if="{{selectFlag=='like'}}">
+      <view class="list-title">我喜欢的内容    <navigator url="/pages/newsList/newsList" class="hide"><text>全部</text></navigator></view>
+      <view class="news" wx:for="{{news}}" wx:key="news.id">
+          <view class="new-left">
+              <navigator url="/pages/details/details?id={{item.id}}">
+                  <view class="news-title">{{item.title}}</view>
+              </navigator>
+              <navigator url="/pages/details/details?id={{item.id}}">
+                  <view class="news-con">{{item.desc}}</view>
+              </navigator>
+          </view>
+          <view class="news-image">
+              <navigator url="/pages/details/details?id={{item.id}}">
+                  <image src="{{host+''+item.content_pic}}"/>
+              </navigator>
+          </view>
+      </view>
+      <view class="undata" wx:if="{{news.length === 0}}"> 暂无信息 </view>
+  </view>
+    <view class="commit-list" wx:elif="{{selectFlag=='commit'}}">
+        <view class="list-title">我评论的内容    <navigator url="/pages/commitList/commitList" class="hide"><text>全部</text></navigator></view>
+        <view class="news" wx:for="{{commits}}" wx:key="commits.id">
+            <view class="new-left">
+                <navigator url="/pages/details/details?id={{item.id}}">
+                    <view class="news-title">{{item.title}}</view>
+                </navigator>
+                <navigator url="/pages/details/details?id={{item.id}}">
+                    <view class="news-con">{{item.desc}}</view>
+                </navigator>
+            </view>
+            <view class="news-image">
+                <navigator url="/pages/details/details?id={{item.id}}">
+                    <image src="{{host+''+item.content_pic}}"/>
+                </navigator>
+            </view>
+        </view>
+        <view class="undata" wx:if="{{commits.length === 0}}"> 暂无信息 </view>
+    </view>
+    <view class="commit-list" wx:else>
+        <view class="list-title">我购买的内容    <navigator url="/pages/commitList/commitList" class="hide"><text>全部</text></navigator></view>
+        <view class="news" wx:for="{{orders}}" wx:key="item.id">
+            <view class="news-image">
+                <navigator url="/pages/details/details?id={{item.id}}">
+                    <image src="{{host+''+item.content.content_pic}}"/>
+                </navigator>
+            </view>
+            <view class="new-left right-side">
+                <navigator url="/pages/shopDetails/shopDetails?id={{item.id}}">
+                    <view class="news-title">{{item.goods.name}}</view>
+                </navigator>
+
+                <view class="news-con">订单号：{{item.order_num}} ￥{{item.price/100}}</view>
+                <view class="news-con">{{item.express_num}} {{item.express_company}} </view>
+                <view wx-if="{{item.is_paid === 0}}" bindtap="goPay" data-val="{{item}}" style="background: {{colorStr}};" class="to-pay">去支付</view>
+            </view>
+        </view>
+        <view class="undata" wx:if="{{orders.length === 0}}"> 暂无信息 </view>
+    </view>
+</view>
+<view class="version" wx:if="{{copyright && isPullDown}}">{{copyright}}</view>

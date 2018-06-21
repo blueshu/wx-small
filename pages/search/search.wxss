@@ -1,0 +1,9 @@
+/**index.wxss**/
+.search-area {position: fixed;top: 0;left: 0;width: 100%;height: 100rpx;background-color: #FFF;display: -webkit-flex; /* Safari */
+  display: flex;
+  flex-direction: row;}
+.search-area input {margin:5rpx 0 0 5%;width: 70%;height: 70rpx;overflow: hidden;font-size: 30rpx;padding: 10rpx;border: 1px solid #DDD;}
+.search-area button {margin-top:10rpx;background-color: #fc1c62; color: #FFF;padding: 10px 14px;line-height: 1;height: 80rpx;}
+.tag-title {margin: 0 0 0 30rpx;font-size: 30rpx;line-height: 50rpx;padding-top: 150rpx; }
+.tag-area {padding: 20rpx 10%;width: 80%;}
+.tag-l {margin: 10rpx;display: inline-block;padding: 15rpx;background-color: #FFF; border: 1rpx solid #DDD;border-radius: 10rpx;font-size: 28rpx;}

@@ -1,0 +1,83 @@
+<!--logs.wxml-->
+<import src="/wxParse/wxParse.wxml"/>
+<view class="des-section">
+  <view class="news-title">{{title}}</view>
+  <view class="news-opp hide">
+    <navigator url="/pages/commitList/commitList?newsId={{id}}">
+      <image src="../../assets/commit.png"></image>
+      <label class="commit-count"><text>{{commitNum}}</text></label>
+    </navigator>
+      <image src="../../assets/heart-1.png" wx:if="{{likeFlag}}" bindtap="dolike"></image>
+      <image src="../../assets/heart.png" wx:else bindtap="dolike"></image>
+      <label class="heart-count" bindtap="dolike"><text>{{likeNum}}</text></label>
+  </view>
+  <view class="news-author hide">
+     <image src="{{imageSrc}}"></image>
+    <view class="news-top">
+      <navigator url="/pages/wixin/wixin">
+        <label class="person-name"><text>{{name}}</text></label>
+      </navigator>
+      <label class="create-time"><text>{{createTime}}</text></label>
+    </view>
+  </view>
+  <view class="new-con">
+    <image wx:if="{{show_pic}}" src="{{content_pic}}" style="width: 100%;height: 150px;" mode="scaleToFill"></image>
+    <template is="wxParse" data="{{wxParseData:article.nodes}}"/>
+  </view>
+  <view class="shop-area" wx:if="{{bind_type == 'goods'}}">
+        <view class="shop-img">
+          <navigator url="/pages/shopDetails/shopDetails?id={{goods.id}}">
+            <image src="{{content_pic}}" />
+          </navigator>
+        </view>
+      <view class="shop-msg">
+        <navigator url="/pages/shopDetails/shopDetails?id={{goods.id}}">
+          <view class="shop-title">{{goods.name}}</view>
+        </navigator>
+        <label class="sale-price">￥{{goods.specification_list[0].price/100}}</label><label class="price">价格</label><label class="price und">￥{{goods.cost_price/100}}</label>
+      </view>
+  </view>
+  <form class="campaign-area"  wx:elif="{{bind_type == 'campaign'}}" bindsubmit="saveCampain">
+    <view class="campaign-title">{{campaign.name}}</view>
+    <view class="campaign-item" wx:for="{{campaign.form_field}}" wx:key="item.id" name="{{item.name}}">
+      <input class="section-input flex-item" name="{{item.name}}" wx:if="{{item.type == 'text'}}" data-id="{{item.id}}" bindblur="checkInput" type="text"  placeholder="{{item.name}}" />
+      <input class="section-input flex-item" name="{{item.name}}" wx:if="{{item.type == 'email'}}" data-id="{{item.id}}" bindblur="checkInput" type="text" value="{{email}}"  placeholder="{{item.name}}" />
+      <input class="section-input flex-item" name="{{item.name}}" wx:if="{{item.type == 'tel'}}" type="number" value="{{phone}}" data-id="{{item.id}}" value="{{phone}}" bindblur="checkInput" placeholder="{{item.name}}" />
+
+      <view class="data-con" wx:if="{{item.type == 'date'}}">
+        <input class="section-input flex-item" name="{{item.name}}" wx:if="{{item.type == 'date'}}" disabled type="number" placeholder="{{item.name}}" value="{{dateValue}}" />
+        <picker class="data-con-picker" mode="date" value="dateValue" bindchange="bindDateChange" data-id="{{item.id}}">
+          <view class="picker">
+            sss
+          </view>
+        </picker>
+      </view>
+      <textarea wx:if="{{item.type == 'textarea'}}" data-id="{{item.id}}" bindblur="checkInput" placeholder="{{item.name}}" name="{{item.name}}"/>
+      <radio-group class="radio-group" wx:if="{{item.type == 'radio'}}" bindchange="getSexValue">
+        <label class="radio">
+          <radio value="男"  checked/>男
+        </label>
+        <label class="radio">
+          <radio value="女" style="margin-left: 20rpx;" />女
+        </label>
+      </radio-group>
+    </view>
+    <view class="btn-area">
+      <button formType="submit" style="background:{{colorStr}};">{{campaign.name}}</button>
+    </view>
+  </form>
+</view>
+
+<view class="commit-area" wx:if="{{commitDisplay}}" >
+  <input type="text" placeholder="写回应" value="{{commitVal}}"  fixed="true" bindinput ="keyInput"/>
+  <button form-type="submit" class="commit-btn" bindtap="doCommit" wx:if="{{inputFlag}}" > 发送 </button>
+    <view wx:else>
+      <navigator url="/pages/commitList/commitList?newsId={{id}}">
+      <image  src="../../assets/svg/interactive{{colorKey}}.svg"></image>
+      <label class="commit-count" style="color:{{colorStr}};"><text>{{commitNum}}</text></label>
+      </navigator>
+    </view>
+  <image class="hot-area" src="../../assets/svg/heart-1{{colorKey}}.svg" wx:if="{{likeFlag}}" bindtap="dolike"></image>
+  <image class="hot-area" src="../../assets/svg/heart{{colorKey}}.svg" wx:else bindtap="dolike"></image>
+  <button open-type="share" class="share-btn"><image class="share-area" src="../../assets/svg/share{{colorKey}}.svg"></image></button>
+</view>

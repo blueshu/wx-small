@@ -1,0 +1,36 @@
+.order-section {
+
+}
+.shop-area {
+  display:flex;
+  flex-direction:row;
+  align-items:center;
+  padding:20rpx 4%;
+  width:92%;
+  background-color:#FFF;
+}
+.shop-area .shop-img {
+  width: 40%;
+  height: 200rpx;
+}
+.shop-area navigator,.shop-area .shop-img image {  display: block;width: 100%;height: 100%;}
+.shop-area .shop-msg {width: 56%;margin-left: 4%;}
+.shop-title {font-size: 30rpx;margin-bottom: 30rpx;line-height: 50rpx;}
+.shop-msg label{font-size: 28rpx;color: #cf171f;}
+label.sale-price {font-size: 50rpx;margin-right: 10rpx;}
+.price {color: #999999;font-size: 28rpx;}
+.und {text-decoration:line-through;}
+.pro-cat {background: #FFF;border: 1px solid #DDD;border-radius: 15rpx;padding: 7rpx 12rpx;margin-right: 18rpx;}
+
+.order-title {background:#f4f4f4;color: #999;padding: 25rpx 4%; font-size: 35rpx;width: 92%;}
+
+.shop-buy {position: fixed;bottom: 0;left: 0;width: 100%;height: 100rpx;color: #FFF;padding: 0;margin: 0;font-size: 42rpx;line-height: 100rpx;text-align: center;}
+.order-input {overflow: hidden;padding: 10rpx 4%; width: 92%;}
+.order-input input {display: inline-block;width: 72%;height: 40rpx;float: left;font-size: 35rpx;line-height:40rpx;padding: 10rpx 15rpx;vertical-align: middle;}
+.order-input label {line-height: 65rpx;float: left;font-size: 35rpx;margin-right: 10rpx;vertical-align: middle;}
+.order-msg {padding-bottom: 100rpx;}
+.order-msg textarea{width: 92%;font-size: 35rpx;padding: 10rpx 4%;height: 100rpx;}
+.order-input image {width: 30rpx; height: 12rpx;float: left;margin-top: 30rpx;}
+.order-input .choose-des {color: #999;width: 140rpx;margin: 0 10rpx;text-align: right;}
+
+

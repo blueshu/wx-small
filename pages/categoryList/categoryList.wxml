@@ -1,0 +1,52 @@
+<!--index.wxml-->
+<view class="container main-area">
+  <swiper indicator-dots="{{indicatorDots}}"
+          autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
+    <block wx:for="{{imgUrls}}" wx:key="imgId">
+      <swiper-item>
+        <image src="{{item.url}}" class="slide-image"/>
+      </swiper-item>
+    </block>
+  </swiper>
+  <view class="title">
+    <block><icon/><text>热门</text></block>
+  </view>
+  <view class="new-list" wx:for="{{hotNews}}" wx:key="item.id">
+      <view class="news">
+        <view class="new-left">
+          <navigator url="/pages/details/details?id={{item.id}}">
+            <view class="news-title">{{item.title}}</view>
+          </navigator>
+          <navigator url="/pages/details/details?id={{item.id}}">
+          <view class="news-con">{{item.desc}}</view>
+          </navigator>
+        </view>
+        <view class="news-image">
+            <navigator url="/pages/details/details?id={{item.id}}">
+              <image src="{{host+''+item.content_pic}}"/>
+            </navigator>
+        </view>
+      </view>
+  </view>
+  <view class="title">
+    <block><icon/><text>最新</text></block>
+  </view>
+  <view class="new-list" wx:for="{{likeNews}}" wx:key="item.id">
+    <view class="news">
+      <view class="new-left">
+        <navigator url="/pages/details/details?id={{item.id}}">
+          <view class="news-title">{{item.title}}</view>
+        </navigator>
+        <navigator url="/pages/details/details?id={{item.id}}">
+          <view class="news-con">{{item.desc}}</view>
+        </navigator>
+      </view>
+      <view class="news-image">
+        <navigator url="/pages/details/details?id={{item.id}}">
+          <image src="{{host+''+item.content_pic}}"/>
+        </navigator>
+      </view>
+    </view>
+  </view>
+</view>
+<view class="version" wx:if="{{copyright && isPullDown}}">{{copyright}}</view>

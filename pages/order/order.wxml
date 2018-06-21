@@ -1,0 +1,64 @@
+<view>
+  <view class="order-section">
+    <view class="shop-area">
+      <view class="shop-img">
+        <navigator url="/pages/shopDetails/shopDetails?id={{id}}">
+          <image src="{{content_pic}}"/>
+        </navigator>
+      </view>
+      <view class="shop-msg">
+        <navigator url="/pages/shopDetails/shopDetails?id=2">
+          <view class="shop-title">{{goodsDetails.name}}</view>
+        </navigator>
+        <label class="pro-cat">价格</label><label>￥</label><label class="sale-price">{{price/100}}</label>
+      </view>
+    </view>
+    <view class="news-title"></view>
+    <view class="order-connect">
+      <view class="order-title">联系方式</view>
+      <view class="order-input">
+        <label>姓名</label>
+        <input value="{{containObj.name}}" />
+      </view>
+      <view class="order-input">
+        <label>电话</label>
+        <input type="digit" bindtap="chooseTel" value="{{containObj.telNumber}}"/>
+      </view>
+      <view class="order-input">
+        <label>电子邮箱</label>
+        <input placeholder="用于接收订单状态" value="{{email}}" bindblur="checkEmailInput"/>
+      </view>
+    </view>
+    <view class="order-add">
+      <view class="order-title">收货地址</view>
+      <view class="order-input" bindtap="chooseAddress">
+        <label>地区</label>
+        <label class="choose-des"  wx:if="{{containObj.province}}">{{containObj.province}}</label>
+        <label class="choose-des"  wx:else>省</label>
+        <image src="../../assets/down.png"  />
+        <label class="choose-des" wx:if="{{containObj.cityName}}">{{containObj.cityName}}</label>
+        <label class="choose-des" wx:else>市</label>
+        <image src="../../assets/down.png"  />
+        <label class="choose-des" wx:if="{{containObj.countyName}}">{{containObj.countyName}}</label>
+        <label class="choose-des" wx:else>区县</label>
+        <image src="../../assets/down.png"  />
+      </view>
+      <view class="order-input">
+        <label>详细地址</label>
+        <input value="{{containObj.detailInfo}}"/>
+      </view>
+      <view class="order-input">
+        <label>邮编</label>
+        <input placeholder="选填" type="digit" value="{{containObj.postalCode}}"/>
+      </view>
+    </view>
+    <view class="order-msg">
+      <view class="order-title">留言</view>
+      <textarea placeholder="选填" bindblur="getCommitInput">{{comments}}</textarea>
+    </view>
+  </view>
+  <view class="shop-buy" style="background: {{colorStr}};" bindtap="shopBuy">
+    提交订单
+  </view>
+</view>
+

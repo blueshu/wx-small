@@ -1,0 +1,13 @@
+<!--index.wxml-->
+<import src="/wxParse/wxParse.wxml"/>
+<view class="container">
+    <view class="wx-area">
+        <image src="{{avatarUrl}}"></image>
+        <label class="wx-name"><text>{{name}}</text></label>
+        <label class="wx-num"><text>微信公众号:{{num}}</text></label>
+        <view class="wx-desc">
+            <template is="wxParse" data="{{wxParseData:desc.nodes}}"/>
+        </view>
+        <label class="wx-copy" bindtap="doCopy" data-num="{{num}}"><text>点击复制微信号</text></label>
+    </view>
+</view>

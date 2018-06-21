@@ -1,0 +1,12 @@
+<!--index.wxml-->
+<view class="main-area">
+    <view class="tag-title">热门搜索</view>
+    <view class="tag-area">
+        <label class="tag-l" wx:for="{{searchList}}" wx:key="item.id" bindtap="searchThis" data-val="{{item.value_data}}"><text>{{item.value_data}}</text></label>
+    </view>
+</view>
+<view class="search-area">
+    <input type="text" placeholder="搜索内容" fixed="true" bindinput ="keyInput"/>
+    <button form-type="submit" class="commit-btn" bindtap="doSearch" style="background:{{colorStr}};"> 搜索 </button>
+</view>
+<view class="version" wx:if="{{copyright && isPullDown}}">{{copyright}}</view>
